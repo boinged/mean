@@ -1,6 +1,6 @@
 var redis = require('redis');
 
-// var client = redis.createClient();
+var client = redis.createClient();
 
 exports.publish = function(topic, data) {
 	client.publish(topic, JSON.stringify(data));
