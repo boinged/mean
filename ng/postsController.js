@@ -1,18 +1,23 @@
 angular.module('app').controller('PostsController', function($scope, PostsService) {
-  $scope.addPost = function() {
-    if ($scope.postBody) {
-      PostsService.create({
-        username: 'boinged',
-        body: $scope.postBody
-      }).success(function(post) {
-        $scope.posts.unshift(post);
-        $scope.postBody = null;
-      });
-    }
-  };
+	$scope.addPost = function() {
+		if ($scope.postBody) {
+			PostsService.create({
+				username: 'boinged',
+				body: $scope.postBody
+			}).success(function(post) {
+				$scope.postBody = null;
+			});
+		}
+	};
 
-  PostsService.fetch()
-    .success(function(posts) {
-      $scope.posts = posts;
-    });
+	$scope.$on('ws:new_post', function(_, post) {
+		$scope.$apply(function() {
+			$scope.posts.unshift(post);
+		});
+	});
+
+	PostsService.fetch()
+		.success(function(posts) {
+			$scope.posts = posts;
+		});
 });
