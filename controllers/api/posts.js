@@ -1,6 +1,7 @@
 var Post = require('../../models/post');
 var router = require('express').Router();
 var websockets = require('../../websockets');
+var pubsub = require('../../pubsub');
 
 router.get('/', function(request, response, next) {
   Post.find()
