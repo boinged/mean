@@ -1,10 +1,14 @@
 var expect = require('chai').expect;
 var api = require('../../support/api');
+var user = require('../../support/user');
 var Post = require('../../../../models/post');
+var User = require('../../../../models/user');
 
 describe('controllers.api.posts', function() {
 	beforeEach(function(done) {
-		Post.remove({}, done);
+		Post.remove({}, function() {
+			User.remove({}, done);
+		});
 	});
 	describe('GET /api/posts', function() {
 		beforeEach(function(done) {
@@ -34,6 +38,31 @@ describe('controllers.api.posts', function() {
 					}
 				})
 				.end(done);
+		});
+	});
+	describe('POST /api/posts', function() {
+		var token;
+
+		beforeEach(function(done) {
+			user.create('boinged', 'pass', function(error, user) {
+				token = user.token;
+				done(error);
+			});
+		});
+		beforeEach(function(done) {
+			api.post('/api/posts')
+				.send({
+					body: 'this is my new post'
+				})
+				.set('X-Auth', token)
+				.expect(201)
+				.end(done);
+		});
+		it('added 1 new post', function(done) {
+			Post.findOne(function(error, post) {
+				expect(post.body).to.equal('this is my new post');
+				done(error);
+			});
 		});
 	});
 });
