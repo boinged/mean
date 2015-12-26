@@ -1,0 +1,19 @@
+{
+  "name": "socialapp",
+	"dependencies": {
+		"angular": "~1.2.29",
+		"angular-mocks": "~1.2.29",
+		"angular-route": "~1.2.29"
+	},
+  "description": "mean tutorial social app",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets",
+    "test"
+  ]
+}

@@ -2,9 +2,8 @@ angular.module('app').controller('PostsController', function($scope, PostsServic
 	$scope.addPost = function() {
 		if ($scope.postBody) {
 			PostsService.create({
-				username: 'boinged',
 				body: $scope.postBody
-			}).success(function(post) {
+			}).then(function(post) {
 				$scope.postBody = null;
 			});
 		}
@@ -17,7 +16,7 @@ angular.module('app').controller('PostsController', function($scope, PostsServic
 	});
 
 	PostsService.fetch()
-		.success(function(posts) {
+		.then(function(posts) {
 			$scope.posts = posts;
 		});
 });

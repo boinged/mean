@@ -32,7 +32,12 @@
     "gulp-uglify": "^1.5.1",
     "jshint": "^2.8.0",
     "jsonwebtoken": "^5.4.1",
+    "karma": "^0.13.16",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^0.2.2",
     "mocha": "^2.3.4",
+    "phantomjs": "^1.9.19",
     "protractor": "^3.0.0",
     "supertest": "^1.1.0"
   }
