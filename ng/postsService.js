@@ -3,6 +3,10 @@ angular.module('app').service('PostsService', function($http) {
     return $http.post('/api/posts', post);
   };
   this.fetch = function() {
-    return $http.get('/api/posts');
+    return $http.get('/api/posts').then(
+			function(response) {
+				return response.data;
+			}
+		);
   };
 });

@@ -1,9 +1,9 @@
-angular.module('app').controller('RegisterController', function($scope, UserService) {
+angular.module('app').controller('RegisterController', function($scope, UserService, $location) {
 	$scope.register = function(username, password) {
-		console.log('register ' + username);
-		UserService.createUser(username, password)
-		.then(function(response) {
-			$scope.$emit('login', response.data);
+		UserService.register(username, password)
+		.then(function(user) {
+			$scope.$emit('login', user);
+			$location.path('/');
 		});
 	};
 });
