@@ -4,6 +4,7 @@
   "description": "mean tutorial social app",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jshint . && mocha && protractor"
   },
   "author": "",
