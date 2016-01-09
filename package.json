@@ -8,6 +8,9 @@
 		"start": "node index.js",
 		"test": "jshint . && mocha && protractor"
 	},
+	"engines": {
+		"node": "4.2.2"
+	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
