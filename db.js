@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/socialapp', function() {
-  console.log('mongodb connected');
-});
+var url = process.env.MONGOLAB_URL || 'mongodb://localhost/socialapp';
+mongoose.connect(url);
 module.exports = mongoose;
